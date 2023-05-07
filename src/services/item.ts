@@ -7,8 +7,11 @@ const insertQuestion = async (item: Question) => {
 };
 
 const getQuestions = async () => {
-  const responseItem = await ItemModel.find({});
-  return responseItem;
+  const responseItem = await ItemModel.find({}).limit(10);
+
+  const responseRandomItem = responseItem.sort(() => Math.random() - 0.5);
+
+  return responseRandomItem;
 };
 
 const getQuestion = async (id: string) => {

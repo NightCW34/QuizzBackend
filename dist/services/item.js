@@ -20,8 +20,9 @@ const insertQuestion = (item) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.insertQuestion = insertQuestion;
 const getQuestions = () => __awaiter(void 0, void 0, void 0, function* () {
-    const responseItem = yield items_1.default.find({});
-    return responseItem;
+    const responseItem = yield items_1.default.find({}).limit(10);
+    const responseRandomItem = responseItem.sort(() => Math.random() - 0.5);
+    return responseRandomItem;
 });
 exports.getQuestions = getQuestions;
 const getQuestion = (id) => __awaiter(void 0, void 0, void 0, function* () {
